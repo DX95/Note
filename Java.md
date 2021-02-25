@@ -1,4 +1,4 @@
-
+​      
 
 # JAVA
 
@@ -53,6 +53,28 @@
 ![image-20210206152054799](Java/image-20210206152054799.png)
 
 ![image-20210206151825736](Java/image-20210206151825736.png)
+
+### 10.1.final
+
+![image-20210224184511389](Java/image-20210224184511389.png)
+
+![image-20210224184431245](Java/image-20210224184431245.png)
+
+final修饰实例变量的时候：
+
+一般与static连用，static final ...，节省内存空间
+
+![image-20210224201455745](Java/image-20210224201455745.png)
+
+#### 常量：
+
+![image-20210224202452428](Java/image-20210224202452428.png)
+
+```java
+public static final String COUNTRY="中国";
+```
+
+
 
 ### 11.super():
 
@@ -722,6 +744,10 @@ class mythread implements Runnable{
         System.out.println(Thread.currentThread().getName()+"--->"+"end");
     }
 }
+//运行结果
+分支线程执行了-->a
+主线程-->执行
+分支线程结束-->a
 ```
 
 ### 终止线程：
@@ -765,6 +791,10 @@ class mythread4 implements Runnable{
 
 ### 线程的优先级：
 
+#### setPriority()
+
+#### getPriority()
+
 ```java
  main.setPriority(1~10);//设置线程的优先级
  getPriority//获取线程的优先级
@@ -775,7 +805,9 @@ class mythread4 implements Runnable{
 
 ### 线程的让步：
 
-Thread.yield(),让位，当前线程暂停，回到就绪状态，让给其他线程
+#### Thread.yield()
+
+让位，当前线程暂停，回到就绪状态，让给其他线程
 
 ```java
  Thread.yield();//重新进入就绪状态，线程的让步，静态方法
@@ -899,6 +931,8 @@ class MShi{
 
 ### 守护线程：
 
+#### thread.setDaemon(true)
+
 ![image-20210216141333938](Java/image-20210216141333938.png)
 
 ```java
@@ -914,10 +948,10 @@ TimerTask是抽象类，不可以直接new
 ```java
 public class 定时器 {
     public static void main(String[] args) throws ParseException {
-        Timer timer=new Timer();
+        Timer timer=new Timer();//
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date fistTime = sdf.parse("2021-02-16 16:22:00");
-        timer.schedule(new TimerTask() {
+        timer.schedule(new TimerTask() {//
             @Override
             public void run() {
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
@@ -951,7 +985,7 @@ public class 实现多线程的第三种方式 {
                 System.out.println("分线程结束");
                 int a=100;
                 int b=200;
-                return a+b;//自定装箱（300自动变成Integer）
+                return a+b;//自动装箱（300自动变成Integer）
             }
         });
 
